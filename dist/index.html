@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VAG Coding — VCDS &amp; OBDeleven reference</title>
+<meta name="description" content="Dark, fast reference for VCDS and OBDeleven coding on Audi, VW, SEAT/Cupra and Skoda. Works offline.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0b0f14">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0f14'/%3E%3Crect x='4' y='4' width='24' height='24' fill='%234d9dff'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='14' font-weight='700' text-anchor='middle' fill='%230b0f14'%3EV%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<noscript><p style="padding:20px;color:#8c9bae">This reference needs JavaScript enabled. All data is local; nothing is sent anywhere.</p></noscript>
+
+<header class="top">
+  <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false" aria-controls="side">
+    <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.6"/></svg>
+  </button>
+  <a class="logo" href="#/" aria-label="VAG Coding home"><span class="logo-vag">VAG</span><span class="logo-coding">CODING</span></a>
+  <div class="search-wrap" role="search">
+    <svg class="search-icon" viewBox="0 0 20 20" width="16" height="16" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.6"/></svg>
+    <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="Search 6,494 procedures…" aria-label="Search procedures" aria-controls="results">
+    <kbd class="kbd">/</kbd>
+    <div class="results" id="results" role="listbox" hidden></div>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side" id="side" aria-label="Vehicle navigation">
+    <nav id="nav"></nav>
+    <div class="side-foot">
+      <a href="#/about">About this site</a>
+    </div>
+  </aside>
+
+  <main class="main" id="main" tabindex="-1"></main>
+
+  <aside class="rail" id="rail" aria-label="Advertisement">
+    <div class="ad-label">Advertisement</div>
+    <div class="ad-slot" id="adRail"></div>
+  </aside>
+</div>
+
+<footer class="foot">
+  <span>Unofficial reference built from <a href="https://www.vag-coding.net/" target="_blank" rel="noopener">vag-coding.net</a>. Coding at your own risk.</span>
+</footer>
+
+<div class="lightbox" id="lightbox" hidden><img alt=""></div>
+
+<script src="assets/config.js"></script>
+<script src="data/index.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
