@@ -10,7 +10,7 @@ from urllib.parse import urlparse
 import bs4
 
 BUILD = "/home/walktheearth/VAGCoder/build"
-DIST = "/home/walktheearth/VAGCoder/dist"
+DIST = "/home/walktheearth/VAGCoder/docs"
 BRANDS = [("audi", "Audi"), ("vw", "VW"), ("seat-cupra", "SEAT / Cupra"), ("skoda", "Skoda")]
 BRAND_NAMES = dict(BRANDS)
 SKIP = {"privacy-policy-and-legal-notice", "favourites", "partners"}

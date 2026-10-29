@@ -218,16 +218,16 @@
   }
 
   function viewAbout() {
+    const download = location.protocol === "file:" ? "" :
+      `<a class="btn" href="VAG-Coding-offline.zip" download>Download offline copy <span>.zip</span></a>`;
     setPage("About", `
       ${crumbs([{ t: "Home", href: "#/" }, { t: "About" }])}
       <div class="page-h"><h1>About</h1></div>
       <div class="doc about">
-        <p>An unofficial, faster and cleaner front end for the coding reference published at <a href="https://www.vag-coding.net/" target="_blank" rel="noopener">vag-coding.net</a>. All procedures originate there; this copy exists so they are readable, searchable and usable offline. Data captured 2026-10-29.</p>
-        <p><strong>Before publishing this online or running ads on it:</strong> the source site states that its text and images are copyrighted and that reproduction is prohibited. Keep this copy private, or ask the original authors for permission first.</p>
-        <h2>Ads</h2>
-        <p>One 160×600 side banner. To enable AdSense, open <code>assets/config.js</code> and fill in your client and slot IDs.</p>
+        <p>A faster, cleaner front end for the coding reference published at <a href="https://www.vag-coding.net/" target="_blank" rel="noopener">vag-coding.net</a>, published with permission. Data captured 2026-10-29.</p>
         <h2>Offline</h2>
-        <p>This whole folder works from your hard drive. Open <code>index.html</code> directly — no server needed.</p>
+        <p>Prefer a local copy? The ZIP runs entirely from your hard drive — no server or internet connection needed. Extract it and open <code>index.html</code>.</p>
+        ${download}
         <h2>Coding is risky</h2>
         <p>Always make a backup before changing anything. Incorrect coding can brick modules, and some procedures differ between model years and equipment levels.</p>
       </div>
@@ -375,38 +375,9 @@
   box.addEventListener("click", () => { box.hidden = true; box.querySelector("img").src = ""; });
   document.addEventListener("keydown", e => { if (e.key === "Escape" && !box.hidden) box.hidden = true; });
 
-  /* ---------- ads ---------- */
-  function initAds() {
-    const cfg = window.VAG_CONFIG || {};
-    const client = String(cfg.adsenseClient || "").trim();
-    const slot = String(cfg.adsenseSlot || "").trim();
-    const rail = $("#rail"), box = $("#adRail");
-    if (location.protocol === "file:") {
-      rail.style.display = "none";
-      document.body.classList.add("no-rail");
-      return;
-    }
-    if (!client || !slot) {
-      box.textContent = "AD SPACE · 160×600";
-      return;
-    }
-    box.style.border = "0";
-    box.style.minHeight = "0";
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(client);
-    s.crossOrigin = "anonymous";
-    s.onload = () => {
-      box.innerHTML = `<ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px" data-ad-client="${esc(client)}" data-ad-slot="${esc(slot)}"></ins>`;
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    };
-    document.head.appendChild(s);
-  }
-
   /* ---------- boot ---------- */
   $(".skip").addEventListener("click", e => { e.preventDefault(); main.focus(); main.scrollIntoView(); });
   input.placeholder = "Search " + window.VI.n.toLocaleString("en") + " procedures…";
   renderNav();
   route();
-  initAds();
 })();

@@ -5,7 +5,7 @@ import os
 import re
 import sys
 
-DIST = "/home/walktheearth/VAGCoder/dist"
+DIST = "/home/walktheearth/VAGCoder/docs"
 
 
 def load_js(path, var):
@@ -62,7 +62,7 @@ def main():
     for root, _, files in os.walk(DIST):
         for f in files:
             total_size += os.path.getsize(os.path.join(root, f))
-    print("dist total:", round(total_size / 1048576, 1), "MB")
+    print("site total:", round(total_size / 1048576, 1), "MB")
     return 1 if problems else 0
 
 
