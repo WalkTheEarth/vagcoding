@@ -15,6 +15,10 @@
   const modelData = {};
   let searchIndex = null;
   let routeId = 0;
+  let activeHash = location.hash || "#/";
+  let pendingRestore = 0;
+  const scrollPositions = new Map();
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 
   /* ---------- data ---------- */
   function loadModel(brand, model) {
@@ -93,8 +97,9 @@
         (f || img).style.display = "none";
       }, { once: true });
     });
-    main.scrollTop = 0;
-    window.scrollTo(0, 0);
+    const y = pendingRestore;
+    pendingRestore = 0;
+    window.scrollTo(0, y);
     closeNav();
     hideResults();
   }
@@ -248,6 +253,12 @@
 
   /* ---------- router ---------- */
   function route() {
+    const nextHash = location.hash || "#/";
+    if (activeHash !== nextHash) {
+      scrollPositions.set(activeHash, window.scrollY);
+      activeHash = nextHash;
+      pendingRestore = scrollPositions.get(nextHash) || 0;
+    }
     routeId++;
     hideResults();
     const parts = location.hash.replace(/^#\/?/, "").split("/").filter(Boolean).map(decodeURIComponent);
